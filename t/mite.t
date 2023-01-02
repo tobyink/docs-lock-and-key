@@ -1,6 +1,9 @@
 use v5.24;
 use Test2::V0;
 
+# Because of how Mite works, I have moved the class definition into an
+# external file, lib/Local2/MonthList.pm.
+#
 use FindBin qw( $Bin );
 use lib "$Bin/lib";
 use Local2::MonthList;

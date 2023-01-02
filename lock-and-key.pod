@@ -292,3 +292,7 @@ Perl has built-in support for read-only arrays and hashes via
 C<< Internals::SvREADONLY >>, but modules like L<Sub::Trigger::Lock> exist
 to make using the feature simpler in object-oriented code.
 
+You can find the full code and test cases for the classes discussed in this
+module here:
+
+L<https://github.com/tobyink/docs-lock-and-key>.
