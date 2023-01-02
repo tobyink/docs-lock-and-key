@@ -266,3 +266,29 @@ C<< after push_month >> method modifier to clear the C<_lookup> hashref.
   };
   
   1;
+
+=head2 Alternative approaches
+
+An alternative approach to locking attributes is cloning them. The basic idea
+is whenever somebody requests C<< $list->months >>, instead of returning a
+reference to your internal array, return a deep clone of it.
+
+This way, if they alter the clone, your internal copy is unaffected.
+
+A major difference with this approach is that there is no exception thrown
+when they alter the clone. In some cases, this will be preferable. In others,
+it may be a source of confusion.
+
+L<MooseX::Extended> offers a C<clone> feature to make this approach easy.
+L<Mite> also supports C<clone>. One drawback is that this can be an expensive
+operation for large and deeply nested structures.
+
+=head2 Conclusion
+
+Locking reference attributes can be a fast and easy way to protect the
+internal state of your objects.
+
+Perl has built-in support for read-only arrays and hashes via
+C<< Internals::SvREADONLY >>, but modules like L<Sub::Trigger::Lock> exist
+to make using the feature simpler in object-oriented code.
+
